@@ -21,7 +21,7 @@ const TaskList = ({
     setActive(filter);
   };
   return (
-    <div className={tasks.length > 0 ? "wrap-task-list" : "hide"}>
+    <div className="wrap-task-list">
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
