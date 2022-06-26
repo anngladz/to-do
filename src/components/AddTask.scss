@@ -1,0 +1,49 @@
+@import "../scss/variables.scss";
+
+.wrap-add-task {
+  display: flex;
+  justify-content: space-between;
+
+  input,
+  button {
+    height: 50px;
+    font-size: $font-medium;
+    font-family: $font-main;
+    border: none;
+    border-radius: 10px;
+  }
+
+  input {
+    width: 88%;
+    background-color: $color-lightgray;
+    color: $color-white;
+    padding: 0 15px;
+
+    &::placeholder {
+      color: $color-graytext;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    width: 10%;
+    background-color: $color-green;
+    color: $color-gray;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrap-add-task {
+    input {
+      width: 75%;
+    }
+    button {
+      width: 20%;
+    }
+  }
+}

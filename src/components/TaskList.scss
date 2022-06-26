@@ -1,0 +1,60 @@
+@import "../scss/variables.scss";
+
+.wrap-task-list {
+  background-color: $color-gray;
+  width: 1000px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 40px;
+
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    button,
+    p {
+      margin: 0 10px;
+      background-color: $color-lightgray;
+      border-radius: 10px;
+      padding: 10px;
+      font-family: $font-main;
+      font-size: $font-small;
+      color: $color-white;
+      border: none;
+      text-transform: uppercase;
+    }
+
+    button {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-green;
+        color: $color-gray;
+      }
+    }
+
+    .active {
+      background-color: $color-green;
+      color: $color-gray;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .wrap-task-list {
+    width: 90vw;
+    padding: 15px;
+    .filter-buttons {
+      button,
+      p {
+        margin: 10px;
+      }
+    }
+  }
+}

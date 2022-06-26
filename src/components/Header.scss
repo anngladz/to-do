@@ -1,0 +1,26 @@
+@import "../scss/variables.scss";
+
+.wrap-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-gray;
+  width: 1000px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 50px auto 20px auto;
+  padding: 40px;
+
+  h1 {
+    font-size: $font-large;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrap-header {
+    width: 90vw;
+    padding: 20px;
+  }
+}

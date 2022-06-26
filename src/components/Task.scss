@@ -1,0 +1,91 @@
+@import "../scss/variables.scss";
+
+.wrap-task {
+  background-color: $color-lightgray;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  margin: 10px 0;
+  font-size: $font-small;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .checkmark,
+  #completed {
+    position: absolute;
+    top: 50%;
+    left: calc(20px + 20px / 2);
+    transform: translate(-50%, -50%);
+    height: 20px;
+    width: 20px;
+  }
+
+  .checkmark {
+    border-radius: 50%;
+    background-color: $color-white;
+
+    &:after {
+      display: none;
+      content: "";
+      position: absolute;
+    }
+  }
+
+  #completed {
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+    &:checked ~ .checkmark {
+      background-color: $color-green;
+    }
+    &:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+
+  p {
+    margin-left: 35px;
+  }
+
+  .completed {
+    color: $color-graytext;
+    text-decoration: line-through;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .edit {
+    margin-left: 35px;
+    width: 60%;
+    background-color: $color-lightgray;
+    color: $color-white;
+    padding: 10px;
+    outline: none;
+    border: 1px solid $color-graytext;
+    border-radius: 10px;
+  }
+
+  div {
+    display: flex;
+  }
+
+  button {
+    background-color: $color-green;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: $font-main;
+    font-size: $font-small;
+    color: $color-gray;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:nth-of-type(2) {
+      background-color: $color-red;
+      margin-left: 10px;
+    }
+  }
+}
