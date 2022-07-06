@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
-import Header from "./components/Header";
-import TaskList from "./components/TaskList";
-import "./App.scss";
+import { useState, useEffect, useCallback } from 'react';
+import Header from './components/Header';
+import TaskList from './components/TaskList';
+import './App.scss';
 
 const App = () => {
   const [tasks, setTasks] = useState(() => {
-    const savedTasks = localStorage.getItem("tasks");
+    const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
       return JSON.parse(savedTasks);
     } else {
@@ -13,32 +13,32 @@ const App = () => {
     }
   });
   const [filterTasks, setfilterTasks] = useState(tasks);
-  const [filter, setfilter] = useState("");
+  const [filter, setfilter] = useState('');
   const [tasksLeft, setTaskLeft] = useState(
     tasks.filter((task) => !task.completed).length
   );
 
   const filterAll = useCallback(() => {
     setfilterTasks(tasks);
-    setfilter("");
+    setfilter('');
   }, [tasks]);
 
   const filterActive = useCallback(() => {
     setfilterTasks(tasks.filter((task) => !task.completed));
-    setfilter("active");
+    setfilter('active');
   }, [tasks]);
 
   const filterCompleted = useCallback(() => {
     setfilterTasks(tasks.filter((task) => task.completed));
-    setfilter("completed");
+    setfilter('completed');
   }, [tasks]);
 
   useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     setTaskLeft(tasks.filter((task) => !task.completed).length);
-    if (filter === "active") {
+    if (filter === 'active') {
       filterActive();
-    } else if (filter === "completed") {
+    } else if (filter === 'completed') {
       filterCompleted();
     } else {
       filterAll();
@@ -63,13 +63,17 @@ const App = () => {
   };
 
   const editTask = (id, editedText) => {
-    const updatedTasks = [...tasks].map((task) => {
-      if (task.id === id) {
-        task.text = editedText;
-      }
-      return task;
-    });
-    setTasks(updatedTasks);
+    if (!editedText) {
+      alert('Write something!');
+    } else {
+      const updatedTasks = [...tasks].map((task) => {
+        if (task.id === id) {
+          task.text = editedText;
+        }
+        return task;
+      });
+      setTasks(updatedTasks);
+    }
   };
 
   const clearCompleted = () => {

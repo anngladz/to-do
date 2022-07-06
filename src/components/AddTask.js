@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import "./AddTask.scss";
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import './AddTask.scss';
 
 const AddTask = ({ addTask }) => {
   const [id, setId] = useState(uuidv4());
@@ -11,26 +11,26 @@ const AddTask = ({ addTask }) => {
     e.preventDefault();
 
     if (!text) {
-      alert("Please add a task!");
+      alert('Please add a task!');
       return;
     }
 
-    setId(uuidv4());
-    setText("");
-    setCompleted(false);
-
     addTask({ id, text, completed });
+
+    setId(uuidv4());
+    setText('');
+    setCompleted(false);
   };
 
   return (
-    <form className="wrap-add-task" onSubmit={handleSubmit}>
+    <form className='wrap-add-task' onSubmit={handleSubmit}>
       <input
-        type="text"
-        placeholder="Task name..."
+        type='text'
+        placeholder='Task name...'
         onChange={(e) => setText(e.target.value)}
-        value={text || ""}
+        value={text || ''}
       />
-      <button type="submit">Add</button>
+      <button type='submit'>Add</button>
     </form>
   );
 };

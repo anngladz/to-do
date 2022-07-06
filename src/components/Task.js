@@ -1,27 +1,28 @@
-import { useState } from "react";
-import "./Task.scss";
+import { useState } from 'react';
+import './Task.scss';
 
 const Task = ({ task, deleteTask, completeTask, editTask }) => {
   const [taskEditing, setTaskEditing] = useState(null);
-  const [editingText, setEditingText] = useState("");
+  const [editingText, setEditingText] = useState('');
 
   return (
-    <div key={task.id} className="wrap-task">
+    <div key={task.id} className='wrap-task'>
       <input
-        type="checkbox"
-        id="completed"
+        type='checkbox'
+        id='completed'
         checked={task.completed}
         onChange={() => completeTask(task.id)}
       />
-      <span className="checkmark"></span>
+      <span className='checkmark'></span>
       {task.id === taskEditing ? (
         <input
-          className="edit"
-          type="text"
+          className='edit'
+          type='text'
+          placeholder={task.text}
           onChange={(e) => setEditingText(e.target.value)}
         />
       ) : (
-        <p className={task.completed ? "completed" : ""}>{task.text}</p>
+        <p className={task.completed ? 'completed' : ''}>{task.text}</p>
       )}
 
       {task.id === taskEditing ? (
@@ -38,7 +39,7 @@ const Task = ({ task, deleteTask, completeTask, editTask }) => {
       ) : (
         <div>
           <button
-            className={task.completed ? "hide" : ""}
+            className={task.completed ? 'hide' : ''}
             onClick={() => setTaskEditing(task.id)}
           >
             Edit
